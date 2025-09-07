@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delish — Cooking & Recipes</title>
+  <!-- Tailwind Play CDN (quick start) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fallback font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    /* subtle gradient overlay for hero */
+    .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.45)); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- NAVBAR -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white font-bold">D</div>
+          <span class="font-semibold text-lg">Delish</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#recipes" class="hover:text-orange-500">Recipes</a>
+          <a href="#categories" class="hover:text-orange-500">Categories</a>
+          <a href="#blog" class="hover:text-orange-500">Blog</a>
+          <a href="#contact" class="hover:text-orange-500">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <button class="hidden md:inline-block bg-orange-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-600">Submit Recipe</button>
+          <!-- mobile menu button -->
+          <button id="menu-btn" class="md:hidden p-2 rounded-md hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- simple mobile nav (no JS required to view; just collapses naturally) -->
+    <div class="md:hidden border-t">
+      <div class="px-6 py-3 flex gap-3">
+        <a href="#recipes" class="text-sm">Recipes</a>
+        <a href="#categories" class="text-sm">Categories</a>
+        <a href="#contact" class="text-sm">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative hero-overlay">
+    <div class="h-72 sm:h-96 bg-cover bg-center" style="background-image: url('cover.jpg')">
+      <div class="h-full w-full hero-overlay flex items-center">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="text-white max-w-2xl">
+            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Discover tasty recipes for every day</h1>
+            <p class="mt-3 text-sm sm:text-base opacity-90">From 20-minute dinners to show-stopping desserts — find, cook, and share epic meals.</p>
+
+            <!-- search (non-functional placeholder) -->
+            <div class="mt-6 flex gap-2">
+              <label for="search" class="sr-only">Search recipes</label>
+              <input id="search" type="text" placeholder="Search recipes, e.g. 'chicken tikka'" class="w-full sm:w-80 rounded-md p-3 text-sm text-gray-800" />
+              <button class="px-4 py-3 bg-white text-orange-500 rounded-md font-semibold text-sm">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <!-- Categories -->
+    <section id="categories" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-5">Popular categories</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <a href="#" class="rounded-lg overflow-hidden shadow-sm bg-white p-4 flex flex-col items-start gap-3">
+          <div class="w-full h-28 bg-[url('https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?auto=format&fit=crop&w=800&q=60')] bg-cover bg-center rounded-md"></div>
+          <div class="text-sm font-semibold">Quick & Easy</div>
+          <div class="text-xs text-gray-500">20–30 min</div>
+        </a>
+
+        <a href="#" class="rounded-lg overflow-hidden shadow-sm bg-white p-4 flex flex-col items-start gap-3">
+          <div class="w-full h-28 bg-[url('vegetarian.jpg')] bg-cover bg-center rounded-md"></div>
+          <div class="text-sm font-semibold">Vegetarian</div>
+          <div class="text-xs text-gray-500">Fresh & healthy</div>
+        </a>
+
+        <a href="#" class="rounded-lg overflow-hidden shadow-sm bg-white p-4 flex flex-col items-start gap-3">
+          <div class="w-full h-28 bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=60')] bg-cover bg-center rounded-md"></div>
+          <div class="text-sm font-semibold">Desserts</div>
+          <div class="text-xs text-gray-500">Sweet treats</div>
+        </a>
+
+        <a href="#" class="rounded-lg overflow-hidden shadow-sm bg-white p-4 flex flex-col items-start gap-3">
+          <div class="w-full h-28 bg-[url('cuisine.jpg')] bg-cover bg-center rounded-md"></div>
+          <div class="text-sm font-semibold">World Cuisine</div>
+          <div class="text-xs text-gray-500">Global flavors</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Recipes grid -->
+    <section id="recipes" class="mb-16">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-semibold">Latest recipes</h2>
+        <a href="#" class="text-sm text-orange-500">View all</a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Recipe card (repeat as needed) -->
+        <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <img src="garlic pasta.jpeg" alt="Recipe" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold">Creamy Garlic Pasta</h3>
+              <span class="text-xs text-gray-500">25 min</span>
+            </div>
+            <p class="mt-2 text-sm text-gray-600">A silky garlic cream sauce with al dente pasta — ready in under half an hour.</p>
+            <div class="mt-4 flex items-center gap-2">
+              <button class="px-3 py-1 border rounded-full text-xs">Pasta</button>
+              <button class="px-3 py-1 border rounded-full text-xs">Vegetarian</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <img src="tacos.jpg" alt="Recipe" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold">Spicy Chicken Tacos</h3>
+              <span class="text-xs text-gray-500">30 min</span>
+            </div>
+            <p class="mt-2 text-sm text-gray-600">Crispy tortillas, zesty chicken, and fresh toppings — fiesta in every bite.</p>
+            <div class="mt-4 flex items-center gap-2">
+              <button class="px-3 py-1 border rounded-full text-xs">Mexican</button>
+              <button class="px-3 py-1 border rounded-full text-xs">Gluten-free</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <img src="lava cake.jpg" alt="Recipe" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold">Chocolate Lava Cake</h3>
+              <span class="text-xs text-gray-500">45 min</span>
+            </div>
+            <p class="mt-2 text-sm text-gray-600">Warm, gooey center and a tender cake — a chocoholic's dream.</p>
+            <div class="mt-4 flex items-center gap-2">
+              <button class="px-3 py-1 border rounded-full text-xs">Dessert</button>
+              <button class="px-3 py-1 border rounded-full text-xs">Baking</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- add more cards as needed -->
+      </div>
+    </section>
+
+    <!-- Blog teaser -->
+    <section id="blog" class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">From the blog</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-white p-5 rounded-lg shadow-sm">
+          <h4 class="font-semibold">5 Essential Spices Every Kitchen Needs</h4>
+          <p class="mt-2 text-sm text-gray-600">Learn how spices transform simple food into unforgettable meals.</p>
+          <a href="#" class="mt-3 inline-block text-sm text-orange-500">Read more →</a>
+        </article>
+
+        <article class="bg-white p-5 rounded-lg shadow-sm">
+          <h4 class="font-semibold">Meal Prep Tips for Busy Weeks</h4>
+          <p class="mt-2 text-sm text-gray-600">Save time without sacrificing flavor — meal prep ideas that actually work.</p>
+          <a href="#" class="mt-3 inline-block text-sm text-orange-500">Read more →</a>
+        </article>
+
+        <article class="bg-white p-5 rounded-lg shadow-sm">
+          <h4 class="font-semibold">Vegetarian Proteins You’ll Love</h4>
+          <p class="mt-2 text-sm text-gray-600">Protein-rich vegetarian dishes that are filling and delicious.</p>
+          <a href="#" class="mt-3 inline-block text-sm text-orange-500">Read more →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter / CTA -->
+    <section class="bg-orange-50 rounded-lg p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="text-lg font-semibold">Get recipes in your inbox</h3>
+        <p class="text-sm text-gray-600">Weekly meal inspiration, tips, and exclusive recipes.</p>
+      </div>
+      <form class="w-full sm:w-auto flex gap-2">
+        <input type="email" placeholder="Your email" class="rounded-md p-3 border text-sm w-full sm:w-72" />
+        <button class="px-4 py-2 bg-orange-500 text-white rounded-md">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="bg-white border-t">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h4 class="font-semibold text-lg">Delish</h4>
+        <p class="mt-3 text-sm text-gray-600">Simple recipes and big flavors. Share your creations with DelishKitchen.</p>
+      </div>
+
+      <div>
+        <h5 class="font-semibold">Quick links</h5>
+        <ul class="mt-3 text-sm text-gray-600 space-y-2">
+          <li><a href="#recipes" class="hover:text-orange-500">Recipes</a></li>
+          <li><a href="#categories" class="hover:text-orange-500">Categories</a></li>
+          <li><a href="#blog" class="hover:text-orange-500">Blog</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-semibold">Contact us</h5>
+        <form class="mt-3 space-y-3">
+          <input type="text" placeholder="Your name" class="w-full p-2 border rounded-md text-sm" />
+          <input type="email" placeholder="Your email" class="w-full p-2 border rounded-md text-sm" />
+          <textarea placeholder="Message" class="w-full p-2 border rounded-md text-sm" rows="3"></textarea>
+          <button class="px-4 py-2 bg-orange-500 text-white rounded-md">Send message</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="border-t items-center">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+        <p>© 2025 Delish — All rights reserved.</p>
+        <div class="flex gap-3 mt-2 sm:mt-0">
+          <a href="#" class="hover:text-gray-700">Privacy</a>
+          <a href="#" class="hover:text-gray-700">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
